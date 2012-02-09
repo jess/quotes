@@ -1,87 +1,60 @@
 What is this?
 =============
 
-This is a simple HTML prototype written in HAML or ERB that is designed to be
-viewed with Serve.
+This is a simple and easy way to create html based quotes for clients.
+It is built only for web developers who want a cooler way to create a
+quote.
 
-What is Serve? Serve is an open-source rapid prototyping framework for Web
-applications. It makes it easy to prototype functionality without writing a
-single line of backend code.
+How's it work?
+---------------
+Create a new quote:
 
+    rake new_quote["client name"]
+   
+Open file in text editor and start creating your quote.
 
-How do I install and run Serve?
--------------------------------
+Using haml/html, you can type anywhere...it's basically unstuctured.
 
-Serve is distributed as a Ruby gem to make it easy to get up and running. You
-must have Ruby installed in order to download and use Serve. The Ruby download
-page provides instructions for getting Ruby setup on different platforms:
+If you want to create a line item, you can do so using the correct
+structure or use the view helper.
 
-<http://www.ruby-lang.org/en/downloads/>
+    # I'm using haml, but it can easily be changed
+    
+    .row
+      %h3 Option Number One
+      %p Take 5 hrs and add new features and spruce up design.
+    .row
+      .item Web Design
+      .description 
+        %ul
+          %li Add reply comment feature
+          %li Add printing page
+          %li Modify design (biggest change for the time)
+      .units 5hrs
+      .unit_price 
+      .total total
+    .spacer
 
-After you have Ruby installed, open up the command prompt and type:
+Or the view helper:
+    
+    # Options
+    # =line_item("item", "Description", units, :unit_price => 100, :spacer => true, :subtotal => true)
 
-    gem install serve
+    =line_item("Web Design", "Place Description here...", 5)
+    =line_item("Web Design", "Place Description here...", 5)
+    =line_item("Web Design", "Place Description here...", 5, :spacer => true, :subtotal => true)
 
-(OSX and Unix users may need to prefix the command with `sudo`.)
+The last hash items are optional.  The unit price is optional (you can
+setup the default unit price in the top of the main file).
+    
+Totals & Subtotals
+-------------------------
+Line item totals will be automatically calculated.
 
-After Serve is installed, you can start it up in a given directory like this:
-
-    serve
-
-This will start Serve on port 4000. You can now view the prototype in your
-Web browser at this URL:
-
-<http://localhost:4000>
-
-
-Compass and Sass
-----------------
-
-This prototype uses Compass and Sass to generate CSS. Both are distributed as
-Ruby gems and can be easily installed from the command prompt. Since the
-Compass gem depends on Sass, you can install them both with one command:
-
-    gem install compass
-
-Learn more about Sass:
-
-<http://sass-lang.org>
-
-Learn more about Compass:
-
-<http://compass-style.org>
-
-
-Rack and Passenger
-------------------
-
-Astute users may notice that this project is also a simple Rack application.
-This means that it is easy to deploy it on Passenger or in any other
-Rack-friendly environment. Rack it up with the `rackup` command. For more
-information about using Serve and Passenger see:
-
-<http://bit.ly/serve-and-passenger>
-
-
-Exporting
----------
-
-To export this project to pure HTML and CSS you will need the prerelease
-version of Serve. To get started with the prerelease version:
-
-    gem install --pre serve
-
-To export your project, use the new "export" command:
-
-    serve export <project>:<output>
-
-Where "project" is the path to the project and "output" is the path to the
-directory where you would like your HTML and CSS generated.
-
-
-Learning More
--------------
-
-You can learn more about Serve on the GitHub project page:
-
-<http://github.com/jlong/serve>
+A grand total will automatically be calculated at the end of your document
+unless you comment it out:
+    
+    =render "partials/total"
+  
+If you include a subtotal, a subtotal will be calculated for all items
+above the subtotal until a spacer or another subtotal is reached.
