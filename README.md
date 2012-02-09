@@ -58,3 +58,12 @@ unless you comment it out:
   
 If you include a subtotal, a subtotal will be calculated for all items
 above the subtotal until a spacer or another subtotal is reached.
+
+More
+-------------------------
+Checkout the views/index.html.haml for more samples.
+
+
+Deploying
+--------------------------
+Coming Soon...
