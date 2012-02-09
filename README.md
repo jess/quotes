@@ -41,8 +41,8 @@ Or the view helper:
     # =line_item("item", "Description", units, :unit_price => 100, :spacer => true, :subtotal => true)
 
     =line_item("Web Design", "Place Description here...", 5)
-    =line_item("Web Design", "Place Description here...", 5)
-    =line_item("Web Design", "Place Description here...", 5, :spacer => true, :subtotal => true)
+    =line_item("Web Design", "Place Description here...", "5 hrs.")
+    =line_item("Web Design", "Place Description here...", "5h", :spacer => true, :subtotal => true)
 
 The last hash items are optional.  The unit price is optional (you can
 setup the default unit price in the top of the main file).
