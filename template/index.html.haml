@@ -1,0 +1,26 @@
+- @page_title = ""
+=render "/partials/calculator", :locals => {:default_unit_price => 75}
+.quote
+  =render "/partials/quote_header"
+  .spacer
+    %p Some Description here if we want
+  =line_item("Web Design", "Place Description here...", 5)
+  =line_item("Web Design", "Place Description here...", "5 hrs.")
+  =line_item("Web Design", "Place Description here...", "5h", :spacer => true, :subtotal => true)
+  .row
+    %h3 Option Number One
+    %p Some Description
+  .row
+    .item Web Design
+    .description 
+      %ul
+        %li Item 1
+        %li Item 2
+        %li Item 3
+    .units 5hrs
+    .unit_price 
+    .total total
+  .spacer
+  =render "/partials/total"
+
+

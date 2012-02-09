@@ -23,3 +23,5 @@ pkg
 *.gem
 .rvmrc
 .bundle
+
+views/quotes/*
