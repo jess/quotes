@@ -1,0 +1,56 @@
+:javascript
+  var unit_price = #{default_unit_price};
+  $(document).ready(function(){
+
+    //set unit price
+    setUnitPrice();
+    calculateTotals();
+    subTotal();
+
+  });
+
+  function setUnitPrice() {
+    $.each($('.row .unit_price'), function(key, value) { 
+      if($(value).text() == "") {
+        $(value).text('$' + unit_price);
+      }
+    });
+  }
+
+  function calculateTotals() {
+    var grand_total = 0;
+    $.each($('.row .total'), function(key, value) { 
+      var unit_value = $(value).prev('div');
+      var units = unit_value.prev('div');
+      var total = get_number(units) * get_number(unit_value);
+      grand_total += total;
+      $(value).text('$' + total);
+      if($('.grand_total').length > 0) {
+        $('.grand_total_amount').text('$'+grand_total);
+      }
+    });
+  }
+
+  function subTotal() {
+    $.each($('.subtotal'), function(key, value) {
+      var sub_total = 0;
+      $(value).prevAll('.row').each(function(){
+        var sibling  = $(this).attr("class"); // Get Sibling ID
+        if (sibling != "subtotal" || sibling != 'spacer') { 
+          sub_total += get_number($('.total', this))
+        } else { // Else, if Sib is LastElement
+                return false; // Break Loop
+        }
+      });  
+      $('.subtotal_amount', value).text('$' + sub_total);
+    });
+  }
+
+
+  function get_number(value) {
+    pattern = /[0-9]+/
+    return parseFloat(pattern.exec(value.text()));
+  }
+</script>
+
+

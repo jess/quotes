@@ -1,0 +1,126 @@
+@import "partials/config";
+@import "compass";
+@import "blueprint";
+
+body {
+  @include blueprint-typography(true);
+  background: #ebebeb;
+  //font-size: 90%;
+}
+
+#container {
+  width: 95%;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid #ccc;
+  max-width: 800px;
+}
+
+.inner {
+  padding: 10px;
+}
+
+header {
+  //border-bottom: 2px solid #ccc;
+  margin-bottom: 15px;
+}
+
+// Quoting Stuff
+
+.quote {
+  width: 100%;
+  .header_row {
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+    @include clearfix;
+  }
+  .row, .header_row {
+    width: 100%;
+    clear: both;
+    .item, .description, .units, .unit_price, .total {
+      float: left;
+    }
+    .item {
+      clear: both;
+      width: 15%;
+    }
+    .description {
+      width: 40%;
+    }
+    .units {
+      width: 15%;
+    }
+    .unit_price {
+      width: 15%;
+    }
+    .total {
+      width: 15%;
+    }
+  }
+  .row {
+    @include clearfix;
+    vertical-align: top;
+    border-bottom: 1px dotted #ebebeb;
+    .span {
+      width: 50%;
+      clear: both;
+      border-bottom: none;
+    }
+  }
+  .units, .unit_price, .total {
+    text-align: right;
+  }
+  .spacer {
+    clear: both;
+    border: none;
+    padding: 15px;
+  }
+
+  .grand_total {
+      border-top: 1px solid #ccc;
+      border-bottom: none;
+      text-align: right;
+    .grand_total_text {
+      font-size: 200%;
+      float: left;
+      text-align: right;
+      width: 60%;
+    }
+    .grand_total_amount {
+      font-size: 200%;
+      //font-weight: bold;
+      float: left;
+      text-align: right;
+      width: 40%;
+    }
+  }
+  .subtotal {
+    clear: both;
+    .subtotal_text{
+      float: left;
+      font-weight: bold;
+      width: 80%;
+      text-align: right;
+    }
+    .subtotal_amount {
+      font-weight: bold;
+      float: left;
+      text-align: right;
+      width: 20%;
+    }
+  }
+
+}
+
+
+
+@media screen and (max-width: 500px) { 
+  .quote {
+    .row {
+      .span {
+        width: 100%;
+      }
+    }
+    
+  }
+}

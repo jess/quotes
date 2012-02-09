@@ -1,0 +1,72 @@
+- @page_title = "Brown Web Design Sample Quote"
+.quote
+  =render "partials/quote_header"
+  =line_item("Web Design", "Place Description here...", 5)
+  =line_item("Web Design", "Place Description here...", 5)
+  =line_item("Web Design", "Place Description here...", 5, :spacer => true, :subtotal => true)
+
+  =line_item("Web Design", "Place Description here...", 5)
+  =line_item("Web Design", "Place Description here...", 5)
+  =line_item("Web Design", "Place Description here...", 5)
+  =line_item("Web Design", "Place Description here...", 5, :subtotal => true, :spacer => true)
+  .row
+    .span
+      %h3 Option Number One
+      %p Take 5 hrs and add new features and spruce up design.
+  .row
+    .item Web Design
+    .description 
+      %ul
+        %li Add reply comment feature
+        %li Add printing page
+        %li Modify design (biggest change for the time)
+    .units 5hrs
+    .unit_price 
+    .total total
+
+  .spacer
+  .row
+    .span
+      %h3 Option Number Two
+      %p Redesign home page to make more modern looking, add better photo slider, better clearer message.
+      %p 
+        The rest of the pages would be mostly the same except for they would have a similar 
+        layout and design as the homepage, but the content would remain the same.
+        
+  .row
+    .item Web Design
+    .description 
+      %ul
+        %li Redesign Home Page
+        %li Add reply comment feature
+        %li Add printing page
+        %li Modify existing pages to fit new design
+    .units 12hrs
+    .unit_price 
+    .total total
+  .spacer
+
+  .row
+    .span
+      %h3 Option Number Three
+      %p 
+        Redesign whole website.  We'll take a completely fresh approach, examine your business, determine 
+        your core competencies, highlight them, and develop a design that embodies your business and polishes 
+        it to perfection.  We'll also setup your site on a content management system so that you can change 
+        pages and add photos.
+  .row
+    .item New Web Design
+    .description 
+      %ul
+        %li New Site Design
+        %li Add reply comment feature
+        %li Add printing page
+    .units 24hrs
+    .unit_price 
+    .total total
+
+  .spacer
+  =render "partials/total"
+
+
+=render "partials/calculator", :locals => {:default_unit_price => 60}
