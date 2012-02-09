@@ -10,6 +10,9 @@ How's it work?
 Create a new quote:
 
     rake new_quote["client name"]
+
+This will create `client-name/index.html.haml` in your `views/quotes`
+directory.
    
 Open file in text editor and start creating your quote.
 
