@@ -2,7 +2,7 @@ body {
   line-height: 1.5;
   font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
   color: #333333;
-  font-size: 75%;
+  font-size: 81.25%;
   background: #ebebeb;
 }
 body h1, body h2, body h3, body h4, body h5, body h6 {
@@ -168,7 +168,28 @@ body .loud {
 }
 
 header {
+  overflow: hidden;
+  *zoom: 1;
   margin-bottom: 15px;
+}
+header .logo {
+  float: left;
+  width: 50%;
+}
+header .proposal {
+  float: right;
+  width: 50%;
+  text-align: right;
+}
+header .proposal img {
+  margin: 5px 5px 0 0;
+}
+header .proposal .info {
+  margin-right: 15px;
+}
+header .proposal .info p {
+  margin: 0;
+  padding: 0;
 }
 
 .quote {
@@ -220,9 +241,10 @@ header {
 .quote .spacer {
   clear: both;
   border: none;
-  padding: 15px;
+  padding: 15px 0 0 0;
 }
 .quote .grand_total {
+  margin-top: 15px;
   border-top: 1px solid #ccc;
   border-bottom: none;
   text-align: right;
@@ -231,13 +253,19 @@ header {
   font-size: 200%;
   float: left;
   text-align: right;
-  width: 60%;
+  width: 50%;
+}
+.quote .grand_total .grand_total_hour_amount {
+  font-size: 200%;
+  float: left;
+  text-align: right;
+  width: 20%;
 }
 .quote .grand_total .grand_total_amount {
   font-size: 200%;
   float: left;
   text-align: right;
-  width: 40%;
+  width: 30%;
 }
 .quote .subtotal {
   clear: both;
@@ -258,5 +286,30 @@ header {
 @media screen and (max-width: 500px) {
   .quote .row .span {
     width: 100%;
+  }
+
+  h1, h2, h3, h4, h5 {
+    text-align: center;
+  }
+
+  header .logo {
+    float: none;
+    width: 100%;
+    text-align: center;
+  }
+  header .proposal {
+    float: none;
+    width: 100%;
+    text-align: center;
+  }
+  header .proposal img {
+    margin: 5px 5px 0 0;
+  }
+  header .proposal .info {
+    margin-right: 15px;
+  }
+  header .proposal .info p {
+    margin: 0;
+    padding: 0;
   }
 }

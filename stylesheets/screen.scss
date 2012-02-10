@@ -22,7 +22,27 @@ body {
 
 header {
   //border-bottom: 2px solid #ccc;
+  @include clearfix;
   margin-bottom: 15px;
+  .logo {
+    float: left;
+    width: 50%;
+  }
+  .proposal {
+    float: right;
+    width: 50%;
+    text-align: right;
+    img {
+      margin: 5px 5px 0 0;
+    }
+    .info {
+      margin-right: 15px;
+      p {
+        margin:0;
+        padding: 0;
+      }
+    }
+  }
 }
 
 // Quoting Stuff
@@ -73,25 +93,32 @@ header {
   .spacer {
     clear: both;
     border: none;
-    padding: 15px;
+    padding: 15px 0 0 0;
   }
 
   .grand_total {
-      border-top: 1px solid #ccc;
-      border-bottom: none;
-      text-align: right;
+    margin-top: 15px;
+    border-top: 1px solid #ccc;
+    border-bottom: none;
+    text-align: right;
     .grand_total_text {
       font-size: 200%;
       float: left;
       text-align: right;
-      width: 60%;
+      width: 50%;
+    }
+    .grand_total_hour_amount {
+      font-size: 200%;
+      float: left;
+      text-align: right;
+      width: 20%;
     }
     .grand_total_amount {
       font-size: 200%;
       //font-weight: bold;
       float: left;
       text-align: right;
-      width: 40%;
+      width: 30%;
     }
   }
   .subtotal {
@@ -121,6 +148,32 @@ header {
         width: 100%;
       }
     }
-    
   }
+  h1, h2, h3, h4, h5 {
+    text-align: center;
+  }
+  header {
+    //border-bottom: 2px solid #ccc;
+    .logo {
+      float: none;
+      width: 100%;
+      text-align: center;
+    }
+    .proposal {
+      float: none;
+      width: 100%;
+      text-align: center;
+      img {
+        margin: 5px 5px 0 0;
+      }
+      .info {
+        margin-right: 15px;
+        p {
+          margin:0;
+          padding: 0;
+        }
+      }
+    }
+  }
+
 }

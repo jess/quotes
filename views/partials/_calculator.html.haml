@@ -5,7 +5,7 @@
     //set unit price
     setUnitPrice();
     calculateTotals();
-    subTotal();
+    calculateHours();
 
   });
 
@@ -19,14 +19,17 @@
 
   function calculateTotals() {
     var grand_total = 0;
+    var total_hours = 0;
     $.each($('.row .total'), function(key, value) { 
       var unit_value = $(value).prev('div');
       var units = unit_value.prev('div');
+      total_hours += get_number(units)
       var total = get_number(units) * get_number(unit_value);
       grand_total += total;
       $(value).text('$' + total);
       if($('.grand_total').length > 0) {
         $('.grand_total_amount').text('$'+grand_total);
+        $('.grand_total_hour_amount').text(total_hours + " hrs");
       }
     });
   }
