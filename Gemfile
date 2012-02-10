@@ -25,3 +25,7 @@ gem 'rdiscount' # Markdown
 
 # Use mongrel for the Web server
 # gem 'mongrel'
+#
+group :development do
+  gem 'guard-livereload'
+end
