@@ -45,7 +45,7 @@ Or the view helper:
 
     =line_item("Web Design", "Place Description here...", 5)
     =line_item("Web Design", "Place Description here...", "5 hrs.")
-    =line_item("Web Design", "Place Description here...", "5h", :spacer => true, :subtotal => true)
+    =line_item("Web Design", "Place Description here...", "5-8h", :spacer => true, :subtotal => true)
 
 The last hash items are optional.  The unit price is optional (you can
 setup the default unit price in the top of the main file).
@@ -58,6 +58,10 @@ A grand total will automatically be calculated at the end of your document
 unless you comment it out:
     
     =render "partials/total"
+
+Total units will be calculated too.  You can also enter a range of units
+(8-10hrs) and it'll take the average of the 2 numbers (must be together
+and separated by a hyphen).
   
 If you include a subtotal, a subtotal will be calculated for all items
 above the subtotal until a spacer or another subtotal is reached.
