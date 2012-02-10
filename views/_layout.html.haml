@@ -25,5 +25,12 @@
   #container
     .inner
       %header 
-        =image_tag "/images/logo.jpg", :width => 200
+        .logo
+          =image_tag "/images/logo.jpg", :width => 195
+        .proposal
+          =image_tag "/images/proposal.jpg"
+          .info
+            %p Brown Web Design
+            %p=link_to "www.brownwebdesign.com", "http://www.brownwebdesign.com"
+            %p 770-266-5849
       =yield
