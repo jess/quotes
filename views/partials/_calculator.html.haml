@@ -56,7 +56,6 @@
     range = pattern.exec(value.text())
     if(range) {
       range = range[0].split("-");
-      alert(range);
       return parseFloat((parseFloat(range[0]) + parseFloat(range[1])) / 2);
     }
     else {
