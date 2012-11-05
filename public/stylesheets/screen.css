@@ -207,6 +207,7 @@ header .proposal .info p {
 }
 .quote .row .item, .quote .row .description, .quote .row .units, .quote .row .unit_price, .quote .row .total, .quote .header_row .item, .quote .header_row .description, .quote .header_row .units, .quote .header_row .unit_price, .quote .header_row .total {
   float: left;
+  overflow: hidden;
 }
 .quote .row .item, .quote .header_row .item {
   clear: both;
@@ -228,7 +229,9 @@ header .proposal .info p {
   overflow: hidden;
   *zoom: 1;
   vertical-align: top;
-  border-bottom: 1px dotted #ebebeb;
+  border-bottom: 1px dotted #ccc;
+  padding-top: 15px;
+  width: 100%;
 }
 .quote .row .span {
   width: 50%;
@@ -248,21 +251,19 @@ header .proposal .info p {
   border-top: 1px solid #ccc;
   border-bottom: none;
   text-align: right;
+  font-size: 120%;
 }
 .quote .grand_total .grand_total_text {
-  font-size: 200%;
   float: left;
   text-align: right;
   width: 50%;
 }
 .quote .grand_total .grand_total_hour_amount {
-  font-size: 200%;
   float: left;
   text-align: right;
   width: 20%;
 }
 .quote .grand_total .grand_total_amount {
-  font-size: 200%;
   float: left;
   text-align: right;
   width: 30%;
@@ -283,6 +284,19 @@ header .proposal .info p {
   width: 20%;
 }
 
+img.img_right {
+  float: right;
+  margin: 5px 5px 10px 10px;
+  border: 1px solid #ccc;
+  -moz-box-shadow: 2px 2px 10px black;
+  -webkit-box-shadow: 2px 2px 10px black;
+  -o-box-shadow: 2px 2px 10px black;
+  box-shadow: 2px 2px 10px black;
+  padding: 5px;
+  background: #fff;
+  width: 200px;
+}
+
 @media screen and (max-width: 500px) {
   .quote .row .span {
     width: 100%;
@@ -290,6 +304,10 @@ header .proposal .info p {
 
   h1, h2, h3, h4, h5 {
     text-align: center;
+  }
+
+  .quote h1, .quote h2, .quote h3, .quote h4, .quote h5 {
+    text-align: left;
   }
 
   header .logo {
@@ -311,5 +329,16 @@ header .proposal .info p {
   header .proposal .info p {
     margin: 0;
     padding: 0;
+  }
+
+  img.img_right {
+    float: none;
+    margin: 2% auto;
+    border: 1px solid #ccc;
+    padding: 2%;
+    background: #fff;
+    display: block;
+    width: 90%;
+    max-width: 450px;
   }
 }

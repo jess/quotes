@@ -59,6 +59,7 @@ header {
     clear: both;
     .item, .description, .units, .unit_price, .total {
       float: left;
+      overflow: hidden;
     }
     .item {
       clear: both;
@@ -80,7 +81,9 @@ header {
   .row {
     @include clearfix;
     vertical-align: top;
-    border-bottom: 1px dotted #ebebeb;
+    border-bottom: 1px dotted #ccc;
+    padding-top: 15px;
+    width: 100%;
     .span {
       width: 50%;
       clear: both;
@@ -101,20 +104,18 @@ header {
     border-top: 1px solid #ccc;
     border-bottom: none;
     text-align: right;
+    font-size: 120%;
     .grand_total_text {
-      font-size: 200%;
       float: left;
       text-align: right;
       width: 50%;
     }
     .grand_total_hour_amount {
-      font-size: 200%;
       float: left;
       text-align: right;
       width: 20%;
     }
     .grand_total_amount {
-      font-size: 200%;
       //font-weight: bold;
       float: left;
       text-align: right;
@@ -139,6 +140,15 @@ header {
 
 }
 
+img.img_right {
+  float: right;
+  margin: 5px 5px 10px 10px;
+  border: 1px solid #ccc;
+  @include single-box-shadow(#000, 2px, 2px, 10px);
+  padding: 5px;
+  background: #fff;
+  width: 200px;
+}
 
 
 @media screen and (max-width: 500px) { 
@@ -151,6 +161,11 @@ header {
   }
   h1, h2, h3, h4, h5 {
     text-align: center;
+  }
+  .quote {
+    h1, h2, h3, h4, h5 {
+    text-align: left;
+    }
   }
   header {
     //border-bottom: 2px solid #ccc;
@@ -175,5 +190,18 @@ header {
       }
     }
   }
+  img.img_right {
+    float: none;
+    margin: 2% auto;
+    border: 1px solid #ccc;
+    //@include single-box-shadow(#000, 2px, 2px, 10px);
+    padding: 2%;
+    background: #fff;
+    display: block;
+    width: 90%;
+    max-width: 450px;
+  }
 
 }
+
+

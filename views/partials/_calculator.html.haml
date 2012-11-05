@@ -1,11 +1,20 @@
+- unless defined? default_unit_name
+  -default_unit_name = " hrs"
+- unless defined? show_range
+  -show_range = false
 :javascript
   var unit_price = #{default_unit_price};
+  var default_unit_name = "#{default_unit_name}";
+  var show_range = #{show_range}
   $(document).ready(function(){
 
     //set unit price
     setUnitPrice();
     calculateTotals();
     subTotal();
+    if(show_range) {
+      insert_ranges();
+    }
 
   });
 
@@ -26,10 +35,10 @@
       total_hours += get_number(units)
       var total = get_number(units) * get_number(unit_value);
       grand_total += total;
-      $(value).text('$' + total);
+      $(value).text('$' + Math.round(total));
       if($('.grand_total').length > 0) {
-        $('.grand_total_amount').text('$'+grand_total);
-        $('.grand_total_hour_amount').text(total_hours + " hrs");
+        $('.grand_total_amount').text('$' + Math.round(grand_total));
+        $('.grand_total_hour_amount').text(total_hours + default_unit_name);
       }
     });
   }
@@ -39,30 +48,77 @@
       var sub_total = 0;
       $(value).prevAll('.row').each(function(){
         var sibling  = $(this).attr("class"); // Get Sibling ID
-        if (sibling != "subtotal" || sibling != 'spacer') { 
+        if (sibling == 'row') { 
           sub_total += get_number($('.total', this))
         } 
         else {
           return false;
         }
+        $('.subtotal_amount', value).text('$' + sub_total);
       });  
-      $('.subtotal_amount', value).text('$' + sub_total);
     });
   }
 
+  function total_low_range() {
+    var low = 0;
+    $(".row .units").each(function() { 
+      low += low_range($(this));
+    });
+    return low;
+  }
+
+  function total_high_range() {
+    var low = 0;
+    $(".row .units").each(function() { 
+      low += high_range($(this));
+    });
+    return low;
+  }
+
+  function insert_ranges() {
+    html = "Range: (" + String(total_low_range()) + " - " + String(total_high_range()) + default_unit_name;
+    html += " or $" + String(total_low_range() * unit_price) + " - $" + String(total_high_range() * unit_price) + ")";
+    html = "<div class='row' style='text-align: right; font-style: italic;'>" + html + "</div>";
+    $('.row.grand_total').after(html);
+  }
+
+  function high_range(value) {
+    pattern = /[0-9]+(\.[0-9][0-9]?)?-[0-9]+(\.[0-9][0-9]?)?/
+    range = pattern.exec(value.text())
+    if(range) {
+      range = range[0].split("-");
+      return parseFloat(range[1]);
+    }
+    else {
+      pattern = /[0-9]+(\.[0-9][0-9]?)?/
+      return parseFloat(pattern.exec(value.text()));
+    }
+  }
+
+  function low_range(value) {
+    pattern = /[0-9]+(\.[0-9][0-9]?)?-[0-9]+(\.[0-9][0-9]?)?/
+    range = pattern.exec(value.text())
+    if(range) {
+      range = range[0].split("-");
+      return parseFloat(range[0]);
+    }
+    else {
+      pattern = /[0-9]+(\.[0-9][0-9]?)?/
+      return parseFloat(pattern.exec(value.text()));
+    }
+  }
 
   function get_number(value) {
-    pattern = /[0-9]+-[0-9]+/
+    pattern = /[0-9]+(\.[0-9][0-9]?)?-[0-9]+(\.[0-9][0-9]?)?/
     range = pattern.exec(value.text())
     if(range) {
       range = range[0].split("-");
       return parseFloat((parseFloat(range[0]) + parseFloat(range[1])) / 2);
     }
     else {
-      pattern = /[0-9]+/
+      pattern = /[0-9]+(\.[0-9][0-9]?)?/
       return parseFloat(pattern.exec(value.text()));
     }
   }
-</script>
 
 

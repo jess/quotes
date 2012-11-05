@@ -1,5 +1,6 @@
 ## MAC OS
 .DS_Store
+.AppleD*
 
 ## TEXTMATE
 *.tmproj
@@ -25,3 +26,4 @@ pkg
 .bundle
 
 views/quotes/*
+public/images/clients/*
